@@ -1,6 +1,6 @@
 package br.com.vitortheof.controllers;
 
-import br.com.vitortheof.exception.UnsupportedMathOperationException;
+import br.com.vitortheof.exception.ResourceNotFoundException;
 import br.com.vitortheof.utils.MathUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +35,7 @@ public class MathController {
         MathUtils.validateNumbers(numberOne, numberTwo);
         double divisor = MathUtils.toDouble(numberTwo);
         if (divisor == 0) {
-            throw new UnsupportedMathOperationException("Cannot divide by zero");
+            throw new ResourceNotFoundException("Cannot divide by zero");
         }
         return MathUtils.toDouble(numberOne) / divisor;
     }
